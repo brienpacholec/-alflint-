@@ -13,17 +13,18 @@ module.exports = {
     menu: [
       { name: "Home", to: "/" },
       { name: "About", to: "/about" },
+      { name: "Test", to: "/test" },
     ],
     links: {
       facebook: "https://www.facebook.com/",
-      instagram: "https://www.instagram.com/",
+      instagram: "https://www.instagram.com/alexandreaflint/",
       pinterest: "https://pinterest.com/",
       twitter: "https://twitter.com/",
     },
     locale: "en",
-    title: `John Doe`,
-    description: `Photography portfolio of John Doe`,
-    author: `@johndoe`,
+    title: `Al Flint`,
+    description: "Al Flint's Adventures",
+    author: `@alflint`,
   },
   plugins: [
     `gatsby-plugin-postcss`,
