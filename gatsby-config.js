@@ -12,14 +12,14 @@ module.exports = {
   siteMetadata: {
     menu: [
       { name: "Home", to: "/" },
-      { name: "About", to: "/about" },
-      { name: "Test", to: "/test" },
+      { name: "About", to: "/about" }
     ],
     links: {
-      facebook: "https://www.facebook.com/",
+      facebook: "https://www.facebook.com/alexandrea.flint",
       instagram: "https://www.instagram.com/alexandreaflint/",
-      pinterest: "https://pinterest.com/",
-      twitter: "https://twitter.com/",
+      pinterest: "https://www.pinterest.com/aflint4865/",
+      twitter: "https://twitter.com/AlexandreaFlint",
+      mercari: "https://mercari.com/u/755460107/",
     },
     locale: "en",
     title: `Al Flint`,
@@ -50,8 +50,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `John Doe`,
-        short_name: `johndoe`,
+        name: `Alexandrea Flint`,
+        short_name: `Al Flint`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#3182ce`,

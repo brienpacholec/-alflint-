@@ -5,13 +5,16 @@ import Hero from "../components/Hero"
 import Layout from "../layouts/Layout"
 import Newsletter from "../components/Newsletter"
 import SiteMetadata from "../components/SiteMetadata"
+import LeadPost from "../components/LeadPost"
 
 const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SiteMetadata title="Home" description="Adventures of Al Flint" />
 
-      <Hero />
+      {/* <Hero /> */}
+
+      <LeadPost {...data.portfolio.nodes[0]} />
 
       <div className="bg-gray-100 py-12 lg:py-16">
         {data.portfolio && data.portfolio.nodes.length > 0 ? (

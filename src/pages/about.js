@@ -6,6 +6,7 @@ import Newsletter from "../components/Newsletter"
 import SiteMetadata from "../components/SiteMetadata"
 
 const AboutPage = ({ data }) => (
+
   <Layout>
     <SiteMetadata title="About" description="Sample description" />
 
