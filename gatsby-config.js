@@ -1,6 +1,7 @@
 require("dotenv").config()
 
 const { CONTENTFUL_SPACE_ID, CONTENTFUL_ACCESS_TOKEN } = process.env
+const { BLOCKS, MARKS, INLINES } = require('@contentful/rich-text-types')
 
 if (!CONTENTFUL_SPACE_ID || !CONTENTFUL_ACCESS_TOKEN) {
   throw new Error(
@@ -12,7 +13,7 @@ module.exports = {
   siteMetadata: {
     menu: [
       { name: "Home", to: "/" },
-      { name: "About", to: "/about" }
+      { name: "About", to: "/about/" }
     ],
     links: {
       facebook: "https://www.facebook.com/alexandrea.flint",
@@ -57,6 +58,31 @@ module.exports = {
         theme_color: `#3182ce`,
         display: `minimal-ui`,
         icon: `src/images/icon.png`,
+      },
+    },
+    {
+      resolve: '@contentful/gatsby-transformer-contentful-richtext',
+      options: {
+        renderOptions: {
+       
+          renderNode: {
+            [INLINES.ASSET_HYPERLINK]: node => {
+              return `<img  src="${
+                node.data.target.fields.file['en-US'].url
+              }"/>`
+            },
+            [INLINES.EMBEDDED_ENTRY]: node => {
+              return `<div/>${
+                node.data.target.fields.name['en-US']
+              }</div>`
+            },
+          },
+          renderMark: {
+            [MARKS.BOLD]: text => `<b>${text}</b>`,
+            [MARKS.ITALIC]: text => `<i>${text}</i>`,
+            [MARKS.UNDERLINE]: text => `<u>${text}</u>`,
+          },
+        },
       },
     },
   ],

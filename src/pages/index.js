@@ -32,7 +32,7 @@ export default IndexPage
 
 export const query = graphql`
   query HomeQuery {
-    portfolio: allContentfulPortfolio {
+    portfolio: allContentfulPortfolio(sort: {fields: createdAt, order: DESC}) {
       nodes {
         ...PortfolioCard
       }

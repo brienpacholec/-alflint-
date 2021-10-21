@@ -6,7 +6,7 @@ import {Link}  from "gatsby"
 
 
 const LeadPost = props => {
-  const { name, slug, summary, thumbnail, updatedAt } = props
+  const { name, slug, summary, thumbnail, createdAt } = props
   const divStyle = {
     placeSelf: "center"
   };
@@ -40,7 +40,7 @@ const LeadPost = props => {
                         </button>
                     </Link>
 
-                    <p className="text-sm sm:text-base text-gray-500">Updated {updatedAt}</p>
+                    <p className="text-sm sm:text-base text-gray-500">Posted {createdAt}</p>
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@ LeadPost.propTypes = {
   thumbnail: PropTypes.shape({
     localFile: PropTypes.object,
   }),
-  updatedAt: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
 }
 
 export default LeadPost
@@ -79,7 +79,7 @@ export const query = graphql`
       }
     }
     summary
-    updatedAt(fromNow: true)
+    createdAt(fromNow: true)
   }
 `
 

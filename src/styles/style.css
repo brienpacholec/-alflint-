@@ -16,6 +16,9 @@ body {
   .container {
     @apply .px-6;
   }
+  h1 {
+    @apply text-4xl
+  }
 }
 
 @screen lg {
@@ -23,3 +26,36 @@ body {
     @apply .px-8;
   }
 }
+
+.__page_content h1 {
+  @apply .text-2xl .font-extrabold .leading-tight .tracking-tight .text-gray-900 .my-4 !important;
+}
+
+.__page_content h2 {
+  @apply .text-2xl .font-extrabold .leading-tight .tracking-tight .text-gray-900 .my-4 !important ;
+}
+
+.__page_content h3 {
+  @apply .text-2xl .font-extrabold .leading-tight .tracking-tight .text-gray-900 .my-4 !important;
+}
+
+.__page_content h4 {
+  @apply .text-2xl .font-extrabold .leading-tight .tracking-tight .text-gray-900 .my-4 !important;
+}
+
+.__page_content h5 {
+  @apply .text-2xl .font-extrabold .leading-tight .tracking-tight .text-gray-900 .my-4 !important;
+}
+
+.__page_content p {
+  @apply .my-3 !important;
+}
+
+
+.__page_content hr {
+  @apply .m-4;
+}
+
+
+
+

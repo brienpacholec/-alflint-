@@ -10,7 +10,6 @@ import Layout from "../layouts/Layout"
 
 export default props => {
   const {
-    content,
     gallery,
     name,
     related,
@@ -20,6 +19,8 @@ export default props => {
     updatedAt,
     createdAt,
     author,
+    childContentfulPortfolioContentRichTextNode,
+
   } = props.data.item
 
   return (
@@ -56,17 +57,14 @@ export default props => {
               </h1>
 
               <h2 className="text-xl leading-tight font-semibold tracking-tight text-pink-600 sm:text-2xl">
-                {summary}
+                {summary} 
               </h2>
 
               <p className="text-sm sm:text-base text-gray-500">Written by <b>{author}</b> {createdAt}</p>
               
-              {content && (
-                <div className="my-4 text-base text-gray-700 whitespace-pre-line">
-                  {content.content}
-                  
-                </div>
-              )}
+              <div className="my-4 text-base text-gray-700 whitespace-pre-line __page_content" dangerouslySetInnerHTML = {{__html: childContentfulPortfolioContentRichTextNode.childContentfulRichText.html}}>
+              </div>
+
               {url && (
                 <div className="mt-8">
                   <Button href={url}>More info</Button>
@@ -100,8 +98,11 @@ export default props => {
 export const query = graphql`
   query PortfolioItemQUery($slug: String!) {
     item: contentfulPortfolio(slug: { eq: $slug }) {
-      content {
-        content
+      childContentfulPortfolioContentRichTextNode {
+        childContentfulRichText {
+          html
+          timeToRead
+        }
       }
       gallery {
         id
