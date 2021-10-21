@@ -35,7 +35,7 @@ Card.propTypes = {
 export default Card
 
 export const query = graphql`
-  fragment PortfolioCard on ContentfulPortfolio {
+  fragment PostCard on ContentfulPost {
     id
     name
     slug

@@ -19,7 +19,7 @@ export default props => {
     updatedAt,
     createdAt,
     author,
-    childContentfulPortfolioContentRichTextNode,
+    childContentfulPostContentRichTextNode,
 
   } = props.data.item
 
@@ -62,7 +62,7 @@ export default props => {
 
               <p className="text-sm sm:text-base text-gray-500">Written by <b>{author}</b> {createdAt}</p>
               
-              <div className="my-4 text-base text-gray-700 whitespace-pre-line __page_content" dangerouslySetInnerHTML = {{__html: childContentfulPortfolioContentRichTextNode.childContentfulRichText.html}}>
+              <div className="my-4 text-base text-gray-700 whitespace-pre-line __slug_page_content" dangerouslySetInnerHTML = {{__html: childContentfulPostContentRichTextNode.childContentfulRichText.html}}>
               </div>
 
               {url && (
@@ -97,8 +97,8 @@ export default props => {
 
 export const query = graphql`
   query PortfolioItemQUery($slug: String!) {
-    item: contentfulPortfolio(slug: { eq: $slug }) {
-      childContentfulPortfolioContentRichTextNode {
+    item: contentfulPost(slug: { eq: $slug }) {
+      childContentfulPostContentRichTextNode {
         childContentfulRichText {
           html
           timeToRead
@@ -117,7 +117,7 @@ export const query = graphql`
       }
       name
       related {
-        ...PortfolioCard
+        ...PostCard
       }
       summary
       thumbnail {

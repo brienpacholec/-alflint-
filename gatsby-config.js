@@ -13,7 +13,8 @@ module.exports = {
   siteMetadata: {
     menu: [
       { name: "Home", to: "/" },
-      { name: "About", to: "/about/" }
+      { name: "About", to: "/about/" },
+      { name: "Photos", to: "/photos/" }
     ],
     links: {
       facebook: "https://www.facebook.com/alexandrea.flint",

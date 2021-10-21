@@ -14,11 +14,11 @@ const IndexPage = ({ data }) => {
 
       {/* <Hero /> */}
 
-      <LeadPost {...data.portfolio.nodes[0]} />
+      <LeadPost {...data.post.nodes[0]} />
 
       <div className="bg-gray-100 py-12 lg:py-16">
-        {data.portfolio && data.portfolio.nodes.length > 0 ? (
-          <Cards items={data.portfolio.nodes} />
+        {data.post && data.post.nodes.length > 0 ? (
+          <Cards items={data.post.nodes} />
         ) : (
           <div className="container">No projects found.</div>
         )}
@@ -32,9 +32,9 @@ export default IndexPage
 
 export const query = graphql`
   query HomeQuery {
-    portfolio: allContentfulPortfolio(sort: {fields: createdAt, order: DESC}) {
+    post: allContentfulPost(sort: {fields: createdAt, order: DESC}) {
       nodes {
-        ...PortfolioCard
+        ...PostCard
       }
     }
   }

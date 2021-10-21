@@ -3,15 +3,15 @@ const path = require(`path`)
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
-    type contentfulPortfolioDescriptionTextNode implements Node {
+    type contentfulPostDescriptionTextNode implements Node {
       description: String
     }
-    type ContentfulPortfolio implements Node {
-      description: contentfulPortfolioDescriptionTextNode
+    type ContentfulPost implements Node {
+      description: contentfulPostDescriptionTextNode
       gallery: [ContentfulAsset]
       id: ID!
       name: String!
-      related: [ContentfulPortfolio]
+      related: [ContentfulPost]
       slug: String!
       summary: String!
       thumbnail: ContentfulAsset
@@ -27,7 +27,7 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     graphql(`
       {
-        portfolio: allContentfulPortfolio {
+        post: allContentfulPost {
           nodes {
             slug
           }
@@ -38,9 +38,9 @@ exports.createPages = ({ graphql, actions }) => {
         reject(errors)
       }
 
-      if (data && data.portfolio) {
-        const component = path.resolve("./src/templates/portfolio-item.jsx")
-        data.portfolio.nodes.map(({ slug }) => {
+      if (data && data.post) {
+        const component = path.resolve("./src/templates/post-item.jsx")
+        data.post.nodes.map(({ slug }) => {
           createPage({
             path: `/${slug}`,
             component,
