@@ -56,6 +56,11 @@ body {
   .__slug_page_content hr {
     @apply .m-4;
   }
+
+  .__slug_page_content a {
+    color: #0275d8 !important;
+    text-decoration: underline;
+  }
 /* #endregion SLUG PAGE CONTENT */
 
 /* #region ABOUT PAGE CONTENT */
@@ -87,5 +92,3 @@ body {
     @apply .m-4;
   }
 /* #endregion ABOUT PAGE CONTENT */
-
-

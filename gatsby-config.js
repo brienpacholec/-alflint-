@@ -18,7 +18,7 @@ module.exports = {
     ],
     links: {
       facebook: "https://www.facebook.com/alexandrea.flint",
-      instagram: "https://www.instagram.com/alexandreaflint/",
+      instagram: "https://www.instagram.com/adventuresaf/",
       pinterest: "https://www.pinterest.com/aflint4865/",
       twitter: "https://twitter.com/AlexandreaFlint",
       mercari: "https://mercari.com/u/755460107/",
