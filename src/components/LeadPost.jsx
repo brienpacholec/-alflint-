@@ -1,3 +1,4 @@
+import { graphql } from 'gatsby'
 import classNames from "classnames"
 import PropTypes from "prop-types"
 import React from "react"
