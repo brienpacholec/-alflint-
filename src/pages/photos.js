@@ -10,21 +10,23 @@ import PhotoGalleryCollection from "../components/PhotoGalleryCollection"
 
 
 
-const PhotoPage = ({ data }) => (
+const PhotoPage = ({ data }) => {
+  return (
+    <Layout>
+      <SiteMetadata title="Photos" description="Check out some of my favorite photos" />
+    
+      <div className="bg-gray-100 py-12 lg:py-16">
+          {data.photos && data.photos.nodes.length > 0 ?  (
+            <PhotoGalleryCollection entries={data.photos.nodes} />
+          ) : (
+            <div className="container">No projects found.</div>
+          )}
+        </div>
 
-  <Layout>
-    <SiteMetadata title="Photos" description="Check out some of my favorite photos" />
-  
-    <div className="bg-gray-100 py-12 lg:py-16">
-        {data.photos && data.photos.nodes.length > 0 ?  (
-          <PhotoGalleryCollection entries={data.photos.nodes} />
-        ) : (
-          <div className="container">No projects found.</div>
-        )}
-      </div>
+    </Layout>
 
-  </Layout>
-)
+  )
+}
 
 export default PhotoPage
 

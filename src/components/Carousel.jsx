@@ -22,6 +22,7 @@ export const Carousel = ({ images }) => {
             <Img
               fluid={image.localFile.childImageSharp.fluid}
               alt={image.title}
+              className = ""
             />
           </div>
         )

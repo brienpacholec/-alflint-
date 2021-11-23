@@ -16,13 +16,14 @@ const IndexPage = ({ data }) => {
 
       <LeadPost {...data.post.nodes[0]} />
 
-      <div className="bg-gray-100 py-12 lg:py-16">
-        {data.post && data.post.nodes.length > 0 ? (
-          <Cards items={data.post.nodes} />
+      {data.post && data.post.nodes.slice(1).length > 0 ? (
+          <div className="bg-gray-100 py-12 lg:py-16">
+            <Cards items={data.post.nodes} />
+          </div>
         ) : (
-          <div className="container">No projects found.</div>
-        )}
-      </div>
+          <div></div>
+      )}
+
       <Newsletter />
     </Layout>
   )

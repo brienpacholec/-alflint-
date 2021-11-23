@@ -14,7 +14,8 @@ module.exports = {
     menu: [
       { name: "Home", to: "/" },
       { name: "About", to: "/about/" },
-      { name: "Photos", to: "/photos/" }
+      { name: "Photos", to: "/photos/" },
+      { name: "Let's Chat", to: "/feedback/" }
     ],
     links: {
       facebook: "https://www.facebook.com/alexandrea.flint",

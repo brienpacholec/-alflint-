@@ -1,5 +1,7 @@
 # Adventures AF [![GitHub](https://img.shields.io/github/license/brienpacholec/-alflint-?color=blue)](https://github.com/brienpacholec/-alflint-/blob/master/LICENSE)
 
+Full build found at [adventuresaf.com](https://www.adventuresaf.com)
+
 ## Technical Requirements
 - Gatsby.JS
 - React
@@ -11,6 +13,7 @@
 - Landing Page
 - About
 - Photo Gallery
+- Let's Chat
 - Slug templates for unique posts
 
 ## TODO ✔️

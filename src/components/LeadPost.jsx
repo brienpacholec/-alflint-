@@ -16,10 +16,9 @@ const LeadPost = props => {
     <div className="container">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-
             <div class="row-span-1 col-san">
                 <div className="">
-                    <Img fluid={thumbnail.localFile.childImageSharp.fluid} alt={name} className="group-hover:opacity-75 transition duration-150 ease-in-out rounded"/>
+                    <Img fluid={thumbnail.localFile.childImageSharp.fluid} alt={name} className="shadow-2xl shadow-inner group-hover:opacity-75 transition duration-150 ease-in-out rounded"/>
                 </div>
             </div>
 
@@ -72,7 +71,7 @@ export const query = graphql`
     thumbnail {
       localFile {
         childImageSharp {
-          fluid(maxWidth: 444, maxHeight: 342, quality: 85) {
+          fluid(quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
