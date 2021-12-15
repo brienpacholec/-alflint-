@@ -1,10 +1,11 @@
 import Img from "gatsby-image"
-import { graphql, Link } from "gatsby"
+// import { graphql, Link } from "gatsby"
+import { graphql} from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
 const PhotoGalleryCard = props => {
-  const { name, coverPhoto, createdAt } = props
+  const { name, coverPhoto} = props
 
   return (
     <div className="bg-white h-full shadow-sm rounded-md overflow-hidden group">

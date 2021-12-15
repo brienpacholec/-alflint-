@@ -8,9 +8,13 @@ import Header from "../components/Header"
 const Layout = ({ children }) => {
   return (
     <>
-      <Header />
-      {children}
-      <Footer />
+      <div className="__site">
+        <Header />
+          <div className="__site_content">
+            {children}
+          </div>
+        <Footer />
+      </div>
     </>
   )
 }

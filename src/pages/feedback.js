@@ -1,9 +1,6 @@
-import { graphql } from "gatsby"
 import React from "react"
 import Layout from "../layouts/Layout"
-import Newsletter from "../components/Newsletter"
 import SiteMetadata from "../components/SiteMetadata"
-import PhotoGalleryCollection from "../components/PhotoGalleryCollection"
 
 
 
@@ -26,7 +23,7 @@ const FeedbackPage = ({ data }) => {
               <br/>
 
              
-              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfbW1t939GMB5lQUbTVDjYxD4UA8RuTrPZbk06hyS61j2Q5ow/viewform?embedded=true&widget=false&headers=false" width="100%" height="500px" frameBorder="0" marginHeight="0" marginWidth="0">Loading…</iframe>
+              <iframe title="Feedback Form" src="https://docs.google.com/forms/d/e/1FAIpQLSfbW1t939GMB5lQUbTVDjYxD4UA8RuTrPZbk06hyS61j2Q5ow/viewform?embedded=true&widget=false&headers=false" width="100%" height="500px" frameBorder="0" marginHeight="0" marginWidth="0">Loading…</iframe>
               
 
             </div>

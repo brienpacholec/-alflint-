@@ -1,12 +1,13 @@
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
 import React from "react"
 import SiteMetadata from "../components/SiteMetadata"
 import Button from "../components/Button"
 import Cards from "../components/Cards"
 import Carousel from "../components/Carousel"
-import Newsletter from "../components/Newsletter"
 import Layout from "../layouts/Layout"
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import ContentfulRichTech from "../components/ContentfulRichTech"
+
 
 function shufflePhotoGallery(array) {
   let i = array.length - 1;
@@ -21,6 +22,7 @@ function shufflePhotoGallery(array) {
 
 export default props => {
   const {
+    content,
     gallery,
     name,
     related,
@@ -29,9 +31,7 @@ export default props => {
     url,
     updatedAt,
     createdAt,
-    author,
-    childContentfulPostContentRichTextNode,
-
+    author
   } = props.data.item
 
   const shuffledGallery = shufflePhotoGallery(gallery);
@@ -41,20 +41,16 @@ export default props => {
       <SiteMetadata
         title={name}
         description={summary}
-        image={thumbnail.localFile.publicURL}
+        image={thumbnail.file.url}
       />
       <div className="bg-gray-0 py-12 lg:py-16">
-          
 
-        <div className="container">
-          <div className="flex flex-wrap">
-            <div className="w-full">
-              {shuffledGallery && shuffledGallery.length > 1 && <Carousel images={shuffledGallery} />}  
-            </div>
-          </div>
-        </div>
+        {/* <GatsbyImage
+            image={getImage(gallery[0].gatsbyImageData)}
+            alt={name}
+        /> */}
+
         
-
         <div className="container">
           <div className="flex flex-wrap">
             <div className="w-full lg:pl-8 xl:pl-12">
@@ -68,8 +64,13 @@ export default props => {
 
               <p className="text-sm sm:text-base text-gray-500">Written by <b>{author}</b> {createdAt}</p>
               
-              <div className="my-4 text-base text-gray-700 whitespace-pre-line __richtext_content" dangerouslySetInnerHTML = {{__html: childContentfulPostContentRichTextNode.childContentfulRichText.html}}>
-              </div>
+              <br/>
+
+              <hr/>
+
+              <br/>
+              
+              <ContentfulRichTech richText = {content} />
 
               {url && (
                 <div className="mt-8">
@@ -96,7 +97,6 @@ export default props => {
           <Cards items={related} hideLastItemOnMobile={true} />
         </div>
       )}
-      <Newsletter />
     </Layout>
   )
 }
@@ -104,25 +104,22 @@ export default props => {
 export const query = graphql`
   query PortfolioItemQUery($slug: String!) {
     item: contentfulPost(slug: { eq: $slug }) {
-      childContentfulPostContentRichTextNode {
-        childContentfulRichText {
-          html
-          timeToRead
+      content {
+        raw
+        references {
+          ... on ContentfulAsset {
+            contentful_id
+            title
+            description
+            gatsbyImageData(width: 300)
+          __typename
+          }
         }
       }
       gallery {
         id
-        localFile {
-          childImageSharp {
-            fixed {
-              ...GatsbyImageSharpFixed_withWebp
-            }
-            fluid(maxWidth: 3080, maxHeight: 1000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
         title
+        gatsbyImageData(layout: CONSTRAINED)
       }
       name
       related {
@@ -130,8 +127,12 @@ export const query = graphql`
       }
       summary
       thumbnail {
-        localFile {
-          publicURL
+        id
+        description
+        gatsbyImageData(layout: CONSTRAINED)
+        __typename
+        file {
+          url
         }
       }
       url

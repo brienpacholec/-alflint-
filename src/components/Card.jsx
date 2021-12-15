@@ -1,7 +1,9 @@
-import Img from "gatsby-image"
+
+
+import React from 'react'
+import PropTypes from 'prop-types'
 import { graphql, Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 const Card = props => {
   const { name, slug, summary, thumbnail, createdAt } = props
@@ -10,7 +12,10 @@ const Card = props => {
     <div className="bg-white h-full shadow-sm rounded-md overflow-hidden group">
       <Link to={`/${slug}`}>
         <div className="group-hover:opacity-75 transition duration-150 ease-in-out">
-          <Img fluid={thumbnail.localFile.childImageSharp.fluid} alt={name} />
+          <GatsbyImage
+            image={getImage(thumbnail.gatsbyImageData)}
+            alt={name}
+          />
         </div>
         <div className="p-4 sm:p-5">
           <h1 className="sm:text-lg text-gray-900 font-semibold">{name}</h1>
@@ -40,12 +45,12 @@ export const query = graphql`
     name
     slug
     thumbnail {
-      localFile {
-        childImageSharp {
-          fluid(quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
+      id
+      description
+      gatsbyImageData(layout: CONSTRAINED)
+      __typename
+      file {
+        url
       }
     }
     summary

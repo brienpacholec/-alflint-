@@ -17,6 +17,13 @@ exports.createSchemaCustomization = ({ actions }) => {
       thumbnail: ContentfulAsset
       url: String
     }
+    type ContentfulPost implements Node {
+      thumbnail: ContentfulAsset @link(by: "id", from: "thumbnail___NODE")
+    }
+    type ContentfulPost implements Node {
+      gallery: [ContentfulAsset] @link(by: "id", from: "gallery___NODE")
+    }
+    
   `
   createTypes(typeDefs)
 }

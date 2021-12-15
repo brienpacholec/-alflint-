@@ -1,9 +1,8 @@
 import { graphql } from "gatsby"
 import React from "react"
 import Cards from "../components/Cards"
-import Hero from "../components/Hero"
+// import Hero from "../components/Hero"
 import Layout from "../layouts/Layout"
-import Newsletter from "../components/Newsletter"
 import SiteMetadata from "../components/SiteMetadata"
 import LeadPost from "../components/LeadPost"
 
@@ -24,7 +23,7 @@ const IndexPage = ({ data }) => {
           <div></div>
       )}
 
-      <Newsletter />
+
     </Layout>
   )
 }

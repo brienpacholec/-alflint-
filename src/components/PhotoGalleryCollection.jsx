@@ -1,7 +1,7 @@
 import classNames from "classnames"
 import PropTypes from "prop-types"
 import React from "react"
-import Img from "gatsby-image"
+// import Img from "gatsby-image"
 import PhotoGalleryCard from "./PhotoGalleryCard"
 
 const PhotoGalleryCollection = ({ entries, hideLastItemOnMobile = false }) => {

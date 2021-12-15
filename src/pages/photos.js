@@ -1,14 +1,9 @@
 import { graphql } from "gatsby"
 import React from "react"
 import Layout from "../layouts/Layout"
-import Newsletter from "../components/Newsletter"
+// import Newsletter from "../components/Newsletter"
 import SiteMetadata from "../components/SiteMetadata"
 import PhotoGalleryCollection from "../components/PhotoGalleryCollection"
-
-
-
-
-
 
 const PhotoPage = ({ data }) => {
   return (
@@ -21,7 +16,7 @@ const PhotoPage = ({ data }) => {
           ) : (
             <div className="container">No projects found.</div>
           )}
-        </div>
+      </div>
 
     </Layout>
 

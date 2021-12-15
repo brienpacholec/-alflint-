@@ -47,9 +47,11 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    
+    `gatsby-remark-images-contentful`,
+    '@contentful/rich-text-react-renderer',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -60,31 +62,6 @@ module.exports = {
         theme_color: `#3182ce`,
         display: `minimal-ui`,
         icon: `src/images/icon.png`,
-      },
-    },
-    {
-      resolve: '@contentful/gatsby-transformer-contentful-richtext',
-      options: {
-        renderOptions: {
-       
-          renderNode: {
-            [INLINES.ASSET_HYPERLINK]: node => {
-              return `<img  src="${
-                node.data.target.fields.file['en-US'].url
-              }"/>`
-            },
-            [INLINES.EMBEDDED_ENTRY]: node => {
-              return `<div/>${
-                node.data.target.fields.name['en-US']
-              }</div>`
-            },
-          },
-          renderMark: {
-            [MARKS.BOLD]: text => `<b>${text}</b>`,
-            [MARKS.ITALIC]: text => `<i>${text}</i>`,
-            [MARKS.UNDERLINE]: text => `<u>${text}</u>`,
-          },
-        },
       },
     },
   ],

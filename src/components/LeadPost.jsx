@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby'
-import classNames from "classnames"
+// import classNames from "classnames"
 import PropTypes from "prop-types"
 import React from "react"
-import Img from "gatsby-image"
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import {Link}  from "gatsby"
 
 
@@ -12,18 +12,22 @@ const LeadPost = props => {
     placeSelf: "center"
   };
 
+
   return (
     <>
     <div className="container">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-            <div class="row-span-1 col-san">
+            <div className="row-span-1 col-san">
                 <div className="">
-                    <Img fluid={thumbnail.localFile.childImageSharp.fluid} alt={name} className="shadow-2xl shadow-inner group-hover:opacity-75 transition duration-150 ease-in-out rounded"/>
+                      <GatsbyImage
+                        image={getImage(thumbnail.gatsbyImageData)}
+                        alt={name}
+                      />
                 </div>
             </div>
 
-            <div class="row-span-1" style={divStyle}>
+            <div className="row-span-1" style={divStyle}>
                 <h2 className="text-3xl sm:text-4xl font-extrabold leading-tight tracking-tight text-gray-900">
                     {name}
                 </h2>
@@ -33,9 +37,9 @@ const LeadPost = props => {
                     </span>
                 </h3>
 
-                <div class="mt-2">
+                <div className="mt-2">
                     <Link to={`/${slug}`}>
-                        <button class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded">
+                        <button className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded">
                             See more 
                         </button>
                     </Link>
@@ -70,12 +74,12 @@ export const query = graphql`
     name
     slug
     thumbnail {
-      localFile {
-        childImageSharp {
-          fluid(quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
+      id
+      description
+      gatsbyImageData(layout: CONSTRAINED)
+      __typename
+      file {
+        url
       }
     }
     summary
