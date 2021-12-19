@@ -24,7 +24,15 @@ export default props => {
         <div className="container">
           <div className="flex flex-wrap">
             <div className="w-full lg:pl-8 xl:pl-12">
-             <p>{description.internal.content}</p>
+
+              <h1 className="text-3xl leading-tight font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-3">
+                {name}
+              </h1>
+             <p className="mb-3">{description.internal.content}</p>
+             <hr />
+
+             <br />
+
               <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}>
               <Masonry columnsCount={3}>
                 {photos.map(item => (
@@ -58,7 +66,7 @@ export const query = graphql`
         }
       }
       photos {
-        gatsbyImageData(layout: CONSTRAINED)
+        gatsbyImageData(layout: FULL_WIDTH)
         id
         title
       }
