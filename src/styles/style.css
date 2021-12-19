@@ -86,6 +86,14 @@ body {
     border-radius: 1rem;
   }
 
+  .__masonry_photos .gatsby-image-wrapper {
+    margin: 20px;
+    border-radius: 1rem;
+    justify-content: center;
+    text-align: center;
+
+  }
+
 
 /* #region SLUG PAGE CONTENT */
   .__parallax {

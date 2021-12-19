@@ -28,35 +28,71 @@ exports.createSchemaCustomization = ({ actions }) => {
   createTypes(typeDefs)
 }
 
+
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  return new Promise((resolve, reject) => {
-    graphql(`
-      {
-        post: allContentfulPost {
-          nodes {
-            slug
-          }
+  const pageTemplates = {
+    Post: path.resolve("./src/templates/post-item.jsx"),
+    Gallery: path.resolve("./src/templates/gallery.jsx"),
+  }
+
+  const posts = graphql(`
+    {
+      post: allContentfulPost {
+        nodes {
+          slug
         }
       }
-    `).then(({ errors, data }) => {
-      if (errors) {
-        reject(errors)
-      }
+    }
+  `).then(result => {
+    if (result.errors) {
+      Promise.reject(result.errors);
+    }
 
-      if (data && data.post) {
-        const component = path.resolve("./src/templates/post-item.jsx")
-        data.post.nodes.map(({ slug }) => {
+   
+
+    if (result.data && result.data.post) {
+        result.data.post.nodes.map(({ slug }) => {
           createPage({
             path: `/${slug}`,
-            component,
+            component: pageTemplates.Post,
             context: { slug },
           })
         })
       }
+  });
 
-      resolve()
-    })
-  })
+
+  const galleries = graphql(`
+    {
+      gallery: allContentfulPhotoGallery {
+        nodes {
+          slug
+        }
+      }
+    }
+  `).then(result => {
+    if (result.errors) {
+      Promise.reject(result.errors);
+    }
+
+   
+
+    if (result.data && result.data.gallery) {
+        result.data.gallery.nodes.map(({ slug }) => {
+          createPage({
+            path: `/photos/${slug}`,
+            component: pageTemplates.Gallery,
+            context: { slug },
+          })
+        })
+      }
+  });
+
+  // Return a Promise which would wait for both the queries to resolve
+	return Promise.all([posts, galleries]);
+
+
 }

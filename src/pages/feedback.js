@@ -8,6 +8,8 @@ import SiteMetadata from "../components/SiteMetadata"
 
 
 const FeedbackPage = ({ data }) => {
+
+ 
   return (
     
     <Layout>
