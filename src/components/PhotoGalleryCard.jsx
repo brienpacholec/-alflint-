@@ -7,7 +7,7 @@ const PhotoGalleryCard = props => {
   const { name, slug, coverPhoto} = props
 
   return (
-    <div className="bg-white h-full shadow-sm rounded-md overflow-hidden group">
+    <div className="bg-white h-full shadow-md rounded-md overflow-hidden group">
       <Link to={`/photos/${slug}`}>
         <div className="group-hover:opacity-75 transition duration-150 ease-in-out">
           <GatsbyImage
@@ -39,7 +39,7 @@ export const query = graphql`
     name
     slug
     coverPhoto {
-      gatsbyImageData(layout: CONSTRAINED)
+      gatsbyImageData( height: 200, width: 300, layout: FULL_WIDTH)
     }
     createdAt(fromNow: true)
   }

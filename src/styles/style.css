@@ -86,12 +86,20 @@ body {
     border-radius: 1rem;
   }
 
+  .__photo_gallery_card .gatsby-image-wrapper {
+    /* height: auto;
+    max-height: 200px; */
+  }
+
   .__masonry_photos .gatsby-image-wrapper {
     margin: 10px;
     border-radius: 1rem;
     justify-content: center;
     text-align: center;
+  }
 
+  .__masonry_photos{
+    text-align-last: center;
   }
 
 

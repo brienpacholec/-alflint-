@@ -27,7 +27,7 @@ export default PhotoPage
 
 export const query = graphql`
   query PhotoGalleryQuery {
-    photos: allContentfulPhotoGallery (sort: {fields: createdAt, order: DESC}) {
+    photos: allContentfulPhotoGallery (sort: {fields: name}) {
       nodes {
         ...PhotoGalleryCard
       }

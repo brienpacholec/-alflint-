@@ -34,17 +34,18 @@ export default props => {
              <br />
 
               <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}>
-              <Masonry columnsCount={3}>
-                {photos.map(item => (
-                <div key={item.id} className="__masonry_photos">
-                  <GatsbyImage
-                    image={getImage(item.gatsbyImageData)}
-                    alt={item.title}
-                    className = "p5"
-                  />
-                </div>
-              ))}
-              </Masonry>
+                <Masonry columnsCount={3}>
+                  {photos.map(item => (
+                  <div key={item.id} className="__masonry_photos">
+                    <GatsbyImage
+                      image={getImage(item.gatsbyImageData)}
+                      alt={item.title}
+                      className = "p5"
+                    />
+                    <p className="text-center">{item.description}</p>
+                  </div>
+                ))}
+                </Masonry>
               </ResponsiveMasonry>
 
              
@@ -69,6 +70,7 @@ export const query = graphql`
         gatsbyImageData(layout: FULL_WIDTH)
         id
         title
+        description
       }
     }
   }
